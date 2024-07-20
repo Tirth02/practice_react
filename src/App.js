@@ -4,6 +4,12 @@ import Navbar from './components/Navbar';
 import TextForm from './components/TextForm';
 import { useState } from 'react';
 import Alert from './components/Alert';
+import About from './components/About';
+import {
+  Routes,
+  Route,
+} from "react-router-dom";
+
 // import About from './components/About';
 function App() {
   const [mode,setMode] = useState('light');
@@ -33,15 +39,20 @@ function App() {
     }
   }
   return (
-   <>
+
+    <div>
     <Navbar title="Text Utils" aboutText = "about us" mode={mode} toggleMode={toggleMode}></Navbar>
     <Alert alert={alert}/>
     <div className="container my-3">
-        <TextForm showAlert={showAlert} mode={mode} heading="Enter the text to analyze below"></TextForm>
+   
+    <Routes>
+          <Route path="/" index element={<TextForm showAlert={showAlert} mode={mode} heading="Enter the text to analyze below"/>}/>
+          <Route path="/about" element={<About/>}/>
+    </Routes> 
         {/* <About></About> */}
     </div>
-    
-   </>
+    </div>
+   
   );
 }
 
@@ -50,7 +61,7 @@ Navbar.propTypes = {
   aboutText: propTypes.string
 }
 
-Navbar.defaultProps ={
-  title:"Enter title"
-}
+// Navbar.defaultProps ={
+//   title:"Enter title"
+// }
 export default App;
