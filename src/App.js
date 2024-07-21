@@ -24,7 +24,18 @@ function App() {
         setAlert(null);
       },2000);
   }
-  const toggleMode = () => {
+
+  // const removeBodyClasses = () =>{
+  //   document.body.classList.remove('bg-light');
+  //   document.body.classList.remove('bg-dark');
+  //   document.body.classList.remove('bg-warning');
+  //   document.body.classList.remove('bg-secondary');
+  //   document.body.classList.remove('bg-danger');
+  //   document.body.classList.remove('bg-success');   
+  // }
+  const toggleMode = (cls) => {
+    // removeBodyClasses();
+    // document.body.classList.add('bg-'+cls);
     if(mode === 'light')
     {
       setMode('dark');
@@ -46,7 +57,7 @@ function App() {
     <div className="container my-3">
    
     <Routes>
-          <Route path="/" index element={<TextForm showAlert={showAlert} mode={mode} heading="Enter the text to analyze below"/>}/>
+          <Route path="/" index element={<TextForm showAlert={showAlert} mode={mode} heading="Try TextUtils - Word Counter, Character Counter, Remove extra soaces"/>}/>
           <Route path="/about" element={<About/>}/>
     </Routes> 
         {/* <About></About> */}
