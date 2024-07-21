@@ -14,10 +14,7 @@ const TextForm = (props) => {
         props.showAlert("Converted to Lowercase","success");
     }
     const handleCopy = () =>{
-        var text = document.getElementById("#myBox");
-        text.select();
-        text.setSelectionRange(0,9999);
-        navigator.clipboard.writeText(text.value);
+        navigator.clipboard.writeText(text);
         props.showAlert("Coped to ClipBoard","success");
     }
     const handleOnChange= (event) =>{
@@ -43,7 +40,7 @@ const handleClearClick= () =>{
     </div>
     <div className="container my-2">
         <h2 className={`text-${props.mode === 'light' ? 'dark': 'light'}`}>Your Text Sumaary</h2>
-        <p className={`text-${props.mode === 'light' ? 'dark': 'light'}`}>{text.split(' ').join('').length} words, {text.length} characters</p>
+        <p className={`text-${props.mode === 'light' ? 'dark': 'light'}`}>{text.split(/\s+/).filter((element) =>{return element.length !== 0}).length} words, {text.length} characters</p>
         <p className={`text-${props.mode === 'light' ? 'dark': 'light'}`}>{0.008 * text.split(' ').length} Minutes to read</p>
         <h2 className={`text-${props.mode === 'light' ? 'dark': 'light'}`}>Preview</h2>
         <p className={`text-${props.mode === 'light' ? 'dark': 'light'}`}>{text.length>0?text:"Nothing to Preview"}</p>
